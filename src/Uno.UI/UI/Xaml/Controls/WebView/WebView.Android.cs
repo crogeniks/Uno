@@ -296,10 +296,12 @@ namespace Windows.UI.Xaml.Controls
 			{
 				_webView.OnNavigationHistoryChanged();
 
+				Uri.TryCreate(url, UriKind.RelativeOrAbsolute, out Uri resultUri);
+
 				var args = new WebViewNavigationCompletedEventArgs()
 				{
 					IsSuccess = _webViewSuccess,
-					Uri = new Uri(url),
+					Uri = resultUri,
 					WebErrorStatus = _webErrorStatus
 				};
 
